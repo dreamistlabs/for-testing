@@ -1,0 +1,13 @@
+{
+  "recommendations": [
+    "aaron-bond.better-comments",
+    "dbaeumer.vscode-eslint",
+    "editorconfig.editorconfig",
+    "emmanuelbeziat.vscode-great-icons",
+    "esbenp.prettier-vscode",
+    "leizongmin.node-module-intellisense",
+    "orta.vscode-jest",
+    "redhat.vscode-yaml",
+    "vincaslt.highlight-matching-tag"
+  ]
+}

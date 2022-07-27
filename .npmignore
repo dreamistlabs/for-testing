@@ -1,0 +1,19 @@
+# Development folder
+src/
+
+# Coverage directory used by tools like istanbul
+coverage/
+
+# Dependency directories
+node_modules/
+
+# Visual Studio Code configuration folder
+.vscode
+
+# apple ds store file
+.DS_Store
+
+# auto-changelog and cloc files
+.auto-changelog.json
+.clocignore
+changelog-template.hbs
