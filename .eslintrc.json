@@ -4,28 +4,19 @@
     "es6": true,
     "node": true
   },
-  "extends": [
-    "eslint:recommended",
-    "plugin:prettier/recommended",
-    "plugin:jest/recommended"
-  ],
+  "extends": ["eslint:recommended", "plugin:prettier/recommended", "plugin:jest/recommended"],
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
   },
   "parserOptions": {
     "ecmaVersion": 2018,
-    "project": [
-      "./backend/jsconfig.json",
-      "./frontend/jsconfig.json"
-    ],
     "sourceType": "module"
   },
-  "plugins": [
-    "jest"
-  ],
+  "plugins": ["jest"],
   "rules": {
-    "import/no-anonymous-default-export": "warn",
+    "prettier/prettier": ["error", { "endOfLine": "auto" }],
+    "import/no-anonymous-default-export": "off",
     "no-unused-vars": "warn",
     "jest/no-disabled-tests": "warn"
   },

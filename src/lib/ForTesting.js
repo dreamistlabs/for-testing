@@ -1,8 +1,7 @@
 class ForTesting {
-  constructor(name = "User") {
+  constructor(name = 'User') {
     this.name = name;
   }
-
   greetings() {
     return `Greetings! You are a rockstar, ${this.name}.`;
   }
