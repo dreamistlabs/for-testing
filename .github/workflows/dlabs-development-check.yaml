@@ -1,15 +1,19 @@
-name: dlabs-development-workflow
+name: dlabs-development-check
 
 on: # push events on, and pull requests against, development branch
   push:
     branches:
       - development
+      - develop
+      - dev
   pull_request:
     branches:
       - development
+      - develop
+      - dev
 
 jobs:
-  dlabs-development-deploy-workflow:
+  dlabs-development-check-workflow:
     runs-on: ${{ matrix.os }}
 
     strategy:
@@ -24,26 +28,26 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Prepare, lint and test repository
+      - name: Run npm install, project linter and test suite
         run: |
-          npm run bootstrap
+          npm install
           npm run lint
           npm test -- --coverage -u
-      - name: Send test coverage to coveralls
+      - name: Send passing test suite's coverage to coveralls
         if: ${{ success() }}
         uses: coverallsapp/github-action@master
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          path-to-lcov: './coverage/lcov.info'
+          path-to-lcov: "./coverage/lcov.info"
       - name: Build production folder
         run: |
           npm run build
         env:
           SKIP_PREFLIGHT_CHECK: true
           CI: false
-      - name: If pull request, add automerge label
-        if: ${{ success() && github.event.pull_request }}
-        uses: actions-ecosystem/action-add-labels@v1
-        with:
-          github_token: ${{ secrets.REPO_SCOPED_TOKEN }}
-          labels: automerge
+      # - name: If pull request, add automerge label
+      #   if: ${{ success() && github.event.pull_request }}
+      #   uses: actions-ecosystem/action-add-labels@v1
+      #   with:
+      #     github_token: ${{ secrets.REPO_SCOPED_TOKEN }}
+      #     labels: automerge
