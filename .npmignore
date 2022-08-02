@@ -13,7 +13,26 @@ node_modules/
 # apple ds store file
 .DS_Store
 
+# github actions workflow
+.github
+
 # auto-changelog and cloc files
 .auto-changelog.json
 .clocignore
 changelog-template.hbs
+handlebars.json
+
+# eslint and prettier files
+.editorconfig
+.eslintignore
+.eslintrc.json
+.prettierignore
+.prettierrc.json
+
+# husky and commitlint
+.husky
+commitlint.config.js
+
+# Miscellaneous markdown files
+CLOC.md
+REFERENCES.md
