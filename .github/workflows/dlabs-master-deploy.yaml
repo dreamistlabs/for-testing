@@ -1,4 +1,4 @@
-name: dlabs-master-check
+name: dlabs-master-deploy
 
 on: # push events on, and pull requests against, master branch
   push:
@@ -11,7 +11,7 @@ on: # push events on, and pull requests against, master branch
       - main
 
 jobs:
-  dlabs-master-check-workflow:
+  dlabs-master-deploy-workflow:
     runs-on: ${{ matrix.os }}
 
     strategy:
@@ -43,3 +43,6 @@ jobs:
         env:
           SKIP_PREFLIGHT_CHECK: true
           CI: false
+      - uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
