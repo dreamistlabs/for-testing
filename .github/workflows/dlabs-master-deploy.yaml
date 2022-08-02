@@ -43,8 +43,7 @@ jobs:
         env:
           SKIP_PREFLIGHT_CHECK: true
           CI: false
-      - name: Deploy package to npm registry (requires 2FA)
-        uses: mmarchini-oss/npm-otp-publish@v0
+      - name: Deploy package to npm registry
+        uses: JS-DevTools/npm-publish@v1
         with:
-          npm_token: ${{ secrets.NPM_TOKEN }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.NPM_TOKEN }}
