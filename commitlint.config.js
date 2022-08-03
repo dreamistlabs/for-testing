@@ -13,6 +13,6 @@ module.exports = {
     'subject-full-stop': [2, 'never', '.'],
     'type-case': [2, 'always', ['lower-case', 'start-case']],
     'type-empty': [2, 'never'],
-    'type-enum': [2, 'always', ['breaking', 'docs', 'feature', 'fix', 'other']],
+    'type-enum': [2, 'always', ['breaking', 'chore', 'docs', 'feature', 'fix', 'other']],
   },
 };

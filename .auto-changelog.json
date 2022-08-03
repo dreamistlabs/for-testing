@@ -4,11 +4,12 @@
   "output": "CHANGELOG.md",
   "template": "keepachangelog",
   "replaceText": {
+    "[Bb]reaking:": "",
+    "[Cc]hore:": "",
     "[Dd]ocs:": "",
     "[Ff]eature:": "",
     "[Ff]ix:": "",
-    "[Oo]ther:": "",
-    "[Bb]reaking:": ""
+    "[Oo]ther:": ""
   },
   "includeBranch": ["development", "master"]
 }
