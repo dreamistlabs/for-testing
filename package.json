@@ -5,10 +5,13 @@
   "main": "dist/index.js",
   "license": "MIT",
   "version": "1.0.0",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "babel src -d dist -s inline",
-    "changelog": "auto-changelog --handlebars-setup handlebars.js --template changelog-template.hbs --package",
-    "changelog-debug": "auto-changelog --handlebars-setup handlebars.js -p --template json --output changelog-preview.json",
+    "changelog": "auto-changelog -p --handlebars-setup handlebars.js --template changelog-template.hbs",
+    "changelog:debug": "auto-changelog -p --template json --output changelog-preview.json",
     "circular-deps": "madge --circular src",
     "cloc": "cloc --skip-win-hidden --exclude-dir=node_modules,bin,build,coverage,dist --exclude-ext=html --exclude-list-file=.clocignore *",
     "cloc:persist": "npm run cloc -- --md --out=CLOC.md && git add CLOC.md",
@@ -20,6 +23,7 @@
     "pretty-check": "prettier --check \"src/**/*.{js,jsx}\"",
     "pretty-format": "npm run pretty-check -- --write",
     "pretty-quick": "pretty-quick --staged --pattern \"src/**/*.*{js,jsx}\"",
+    "release": "release-it",
     "start": "nodemon --exec babel-node src/index.js",
     "test": "jest",
     "test:coverage": "jest --coverage",
@@ -48,12 +52,12 @@
     "nodemon": "^2.0.15",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.7.1",
-    "pretty-quick": "^3.1.3"
+    "pretty-quick": "^3.1.3",
+    "release-it": "^15.2.0"
   },
   "optionalDependencies": {
     "win-node-env": "^0.6.1"
   },
-  "dependencies": {},
   "jest": {
     "coverageReporters": [
       "json",

@@ -1,0 +1,13 @@
+{
+  "git": {
+    "changelog": "npm run changelog",
+    "commitMessage": "chore: release v${version}",
+    "requireCleanWorkingDir": true
+  },
+  "github": {
+    "release": false
+  },
+  "hooks": {
+    "after:bump": "npm run changelog"
+  }
+}

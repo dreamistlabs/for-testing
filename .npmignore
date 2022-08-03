@@ -16,9 +16,10 @@ node_modules/
 # github actions workflow
 .github
 
-# auto-changelog and cloc files
+# auto-changelog, cloc and release-it files
 .auto-changelog.json
 .clocignore
+.release-it.json
 changelog-template.hbs
 handlebars.json
 
