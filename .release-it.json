@@ -1,7 +1,7 @@
 {
   "git": {
     "changelog": "npm run changelog",
-    "commitMessage": "chore: release v${version}",
+    "commitMessage": "chore: Release v${version}",
     "requireCleanWorkingDir": true
   },
   "github": {
