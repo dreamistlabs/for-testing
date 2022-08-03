@@ -4,7 +4,7 @@
   "author": "Johnny Hu <johnny@dreamistlabs.com>",
   "main": "dist/index.js",
   "license": "MIT",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "publishConfig": {
     "access": "public"
   },
@@ -23,7 +23,7 @@
     "pretty-check": "prettier --check \"src/**/*.{js,jsx}\"",
     "pretty-format": "npm run pretty-check -- --write",
     "pretty-quick": "pretty-quick --staged --pattern \"src/**/*.*{js,jsx}\"",
-    "release": "cross-env HUSKY_SKIP_HOOKS=1 release-it",
+    "release": "cross-env CI=true release-it",
     "start": "nodemon --exec babel-node src/index.js",
     "test": "jest",
     "test:coverage": "jest --coverage",

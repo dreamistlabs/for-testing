@@ -22,7 +22,7 @@ _However, please note this feature is still experimental, at best, and is theref
       commits
       heading="### Breaking Changes"
       message="(breaking: )|(Breaking: )"
-      exclude="(feature: )|(Feature: )|(fix: )|(Fix: )|(other: )|(Other: )|(docs: )|(Docs: )"
+      exclude="(feature: )|(Feature: )|(fix: )|(Fix: )|(other: )|(Other: )|(docs: )|(Docs: )|(chore: )|(Chore: )"
     }}
       *
       {{removePrefix subject}}
@@ -35,7 +35,7 @@ _However, please note this feature is still experimental, at best, and is theref
       commits
       heading="### Features"
       message="(feature: )|(Feature: )"
-      exclude="(breaking: )|(Breaking: )|(fix: )|(Fix: )|(other: )|(Other: )|(docs: )|(Docs: )"
+      exclude="(breaking: )|(Breaking: )|(fix: )|(Fix: )|(other: )|(Other: )|(docs: )|(Docs: )|(chore: )|(Chore: )"
     }}
       *
       {{removePrefix subject}}
@@ -48,7 +48,7 @@ _However, please note this feature is still experimental, at best, and is theref
       commits
       heading="### Fixes"
       message="(fix: )|(Fix: )"
-      exclude="(breaking: )|(Breaking: )|(feature: )|(Feature: )|(other: )|(Other: )|(docs: )|(Docs: )"
+      exclude="(breaking: )|(Breaking: )|(feature: )|(Feature: )|(other: )|(Other: )|(docs: )|(Docs: )|(chore: )|(Chore: )"
     }}
       *
       {{removePrefix subject}}
@@ -61,7 +61,7 @@ _However, please note this feature is still experimental, at best, and is theref
       commits
       heading="### Other Changes"
       message="(other: )|(Other: )"
-      exclude="(breaking: )|(Breaking: )|(feature: )|(Feature: )|(fix: )|(Fix: )|(docs: )|(Docs: )"
+      exclude="(breaking: )|(Breaking: )|(feature: )|(Feature: )|(fix: )|(Fix: )|(docs: )|(Docs: )|(chore: )|(Chore: )"
     }}
       *
       {{removePrefix subject}}
@@ -74,7 +74,20 @@ _However, please note this feature is still experimental, at best, and is theref
       commits
       heading="### Documentation"
       message="(docs: )|(Docs: )"
-      exclude="(breaking: )|(Breaking: )|(feature: )|(Feature: )|(fix: )|(Fix: )|(other: )|(Other: )"
+      exclude="(breaking: )|(Breaking: )|(feature: )|(Feature: )|(fix: )|(Fix: )|(other: )|(Other: )|(chore: )|(Chore: )"
+    }}
+      *
+      {{removePrefix subject}}
+      ([`{{shorthash}}`]({{href}}))
+      <sub>{{formatDate date}}</sub>
+    {{/commit-list}}
+
+      {{! use chore: or Chore: }}
+    {{#commit-list
+      commits
+      heading="### Chores"
+      message="(chore: )|(Chore: )"
+      exclude="(breaking: )|(Breaking: )|(feature: )|(Feature: )|(fix: )|(Fix: )|(other: )|(Other: )|(docs: )|(Docs: )"
     }}
       *
       {{removePrefix subject}}
