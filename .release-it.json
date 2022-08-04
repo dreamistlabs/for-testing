@@ -9,5 +9,8 @@
   },
   "hooks": {
     "after:bump": "npm run changelog"
+  },
+  "npm": {
+    "publish": true
   }
 }

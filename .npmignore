@@ -16,6 +16,10 @@ node_modules/
 # github actions workflow
 .github
 
+
+# Test mocks
+__mocks__
+
 # auto-changelog, cloc and release-it files
 .auto-changelog.json
 .clocignore
