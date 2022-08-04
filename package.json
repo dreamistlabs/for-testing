@@ -23,7 +23,7 @@
     "pretty-check": "prettier --check \"src/**/*.{js,jsx}\"",
     "pretty-format": "npm run pretty-check -- --write",
     "pretty-quick": "pretty-quick --staged --pattern \"src/**/*.*{js,jsx}\"",
-    "release": "cross-env CI=true release-it",
+    "release": "release-it",
     "start": "nodemon --exec babel-node src/index.js",
     "test": "jest",
     "test:coverage": "jest --coverage",
