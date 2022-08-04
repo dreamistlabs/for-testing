@@ -13,26 +13,19 @@ module.exports = function (UI) {
     }
   });
 
-  // Removes the prefixes in the commit messages (eg, other, feature, etc)
+  // Removes the prefixes in the commit messages (e.g., added, changed, deprecated, etc.)
   UI.registerHelper('getCommitSections', () => {
-    return [
-      { sectionHeading: '### Added', msgPrefix: '(added: )|(Added: )', exclude: null },
-      { sectionHeading: '### Changed', msgPrefix: '(changed: )|(Changed: )' },
-      {
-        sectionHeading: '### Deprecated',
-        msgPrefix: '(deprecated: )|(Deprecated: )',
-        exclude: null,
-      },
-      { sectionHeading: '### Fixed', msgPrefix: '(fixed: )|(Fixed: )', exclude: null },
-      { sectionHeading: '### Removed', msgPrefix: '(removed: )|(Removed: )', exclude: null },
-      { sectionHeading: '### Security', msgPrefix: '(security: )|(Security: )', exclude: null },
-      {
-        sectionHeading: '### Other',
-        msgPrefix: null,
-        exclude:
-          '(added: )|(Added: )|(changed: )|(Changed: )|(deprecated: )|(Deprecated: )|(fixed: )|(Fixed: )|(removed: )|(Removed: )|(security: )|(Security: )',
-      },
-    ];
+    const types = ['Added', 'Changed', 'Deprecated', 'Fixed', 'Removed', 'Security', 'Other'];
+    const excludes = types
+      .slice(0, types.length - 1)
+      .map(type => `(${type}: )|(${type.toLowerCase()}: )`)
+      .join('|');
+
+    return types.map(type => ({
+      sectionHeading: `#### ${type}`,
+      msgPrefix: `(${type}: )|(${type.toLowerCase()}: )`,
+      exclude: type === 'Other' ? excludes : null,
+    }));
   });
 
   // Removes the prefixes in the commit messages (eg, other, feature, etc)
