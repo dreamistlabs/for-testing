@@ -1,9 +1,6 @@
 # Changelog 
 
-All notable changes to this project will be documented in this file.
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project does its best to try to adheres to [Semantic
-Versioning](https://semver.org/spec/v2.0.0.html). 
+All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project does its best to try to adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html). 
 
 _However, please note this feature is still experimental, at best, and is therefore prone to inconsistencies and/or errors. Please reference with caution._
 
@@ -13,86 +10,18 @@ _However, please note this feature is still experimental, at best, and is theref
 
 {{#each (filterPostV1Releases releases)}}
   {{#if commits}}
-    ##
-    {{title}}
+    ## [{{title}}]
     _{{formatDate isoDate "long"}}_
 
-    {{! use breaking: or Breaking: }}
-    {{#commit-list
-      commits
-      heading="### Breaking Changes"
-      message="(breaking: )|(Breaking: )"
-      exclude="(feature: )|(Feature: )|(fix: )|(Fix: )|(other: )|(Other: )|(docs: )|(Docs: )|(chore: )|(Chore: )"
-    }}
-      *
-      {{removePrefix subject}}
-      ([`{{shorthash}}`]({{href}}))
-      <sub>{{formatDate date}}</sub>
-    {{/commit-list}}
-
-    {{! use feature: or Feature: }}
-    {{#commit-list
-      commits
-      heading="### Features"
-      message="(feature: )|(Feature: )"
-      exclude="(breaking: )|(Breaking: )|(fix: )|(Fix: )|(other: )|(Other: )|(docs: )|(Docs: )|(chore: )|(Chore: )"
-    }}
-      *
-      {{removePrefix subject}}
-      ([`{{shorthash}}`]({{href}}))
-      <sub>{{formatDate date}}</sub>
-    {{/commit-list}}
-
-    {{! use fix: or Fix: or bugfix or Bugfix }}
-    {{#commit-list
-      commits
-      heading="### Fixes"
-      message="(fix: )|(Fix: )"
-      exclude="(breaking: )|(Breaking: )|(feature: )|(Feature: )|(other: )|(Other: )|(docs: )|(Docs: )|(chore: )|(Chore: )"
-    }}
-      *
-      {{removePrefix subject}}
-      ([`{{shorthash}}`]({{href}}))
-      <sub>{{formatDate date}}</sub>
-    {{/commit-list}}
-
-    {{! use other: or Other: }}
-    {{#commit-list
-      commits
-      heading="### Other Changes"
-      message="(other: )|(Other: )"
-      exclude="(breaking: )|(Breaking: )|(feature: )|(Feature: )|(fix: )|(Fix: )|(docs: )|(Docs: )|(chore: )|(Chore: )"
-    }}
-      *
-      {{removePrefix subject}}
-      ([`{{shorthash}}`]({{href}}))
-      <sup>{{formatDate date}}</sup>
-    {{/commit-list}}
-
-    {{! use docs: or Docs: }}
-    {{#commit-list
-      commits
-      heading="### Documentation"
-      message="(docs: )|(Docs: )"
-      exclude="(breaking: )|(Breaking: )|(feature: )|(Feature: )|(fix: )|(Fix: )|(other: )|(Other: )|(chore: )|(Chore: )"
-    }}
-      *
-      {{removePrefix subject}}
-      ([`{{shorthash}}`]({{href}}))
-      <sub>{{formatDate date}}</sub>
-    {{/commit-list}}
-
-    {{! use chore: or Chore: }}
-    {{#commit-list
-      commits
-      heading="### Chores"
-      message="(chore: )|(Chore: )"
-      exclude="(breaking: )|(Breaking: )|(feature: )|(Feature: )|(fix: )|(Fix: )|(other: )|(Other: )|(docs: )|(Docs: )"
-    }}
-      *
-      {{removePrefix subject}}
-      ([`{{shorthash}}`]({{href}}))
-      <sub>{{formatDate date}}</sub>
-    {{/commit-list}}
+    {{#each (getCommitSections section)}}
+      {{#commit-list
+        ../commits
+        heading=sectionHeading
+        message=msgPrefix
+        exclude=exclude
+      }}
+        * {{removePrefix subject}} ([`{{shorthash}}`]({{href}})) <sub>{{formatDate date}}</sub>
+      {{/commit-list}}
+    {{/each}}
   {{/if}}
 {{/each}}

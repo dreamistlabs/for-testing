@@ -1,8 +1,8 @@
-const { DateTime } = require("luxon");
+const { DateTime } = require('luxon');
 
 module.exports = function (UI) {
-  UI.registerHelper("formatDate", (datetime, format = "short") => {
-    if (format === "long") {
+  UI.registerHelper('formatDate', (datetime, format = 'short') => {
+    if (format === 'long') {
       return DateTime.fromISO(datetime).toLocaleString(DateTime.DATE_HUGE);
     } else {
       const { day, month, year } = DateTime.fromISO(datetime);
@@ -14,19 +14,39 @@ module.exports = function (UI) {
   });
 
   // Removes the prefixes in the commit messages (eg, other, feature, etc)
-  UI.registerHelper("removePrefix", (subject) => {
+  UI.registerHelper('getCommitSections', () => {
+    return [
+      { sectionHeading: '### Added', msgPrefix: '(added: )|(Added: )', exclude: null },
+      { sectionHeading: '### Changed', msgPrefix: '(changed: )|(Changed: )' },
+      {
+        sectionHeading: '### Deprecated',
+        msgPrefix: '(deprecated: )|(Deprecated: )',
+        exclude: null,
+      },
+      { sectionHeading: '### Fixed', msgPrefix: '(fixed: )|(Fixed: )', exclude: null },
+      { sectionHeading: '### Removed', msgPrefix: '(removed: )|(Removed: )', exclude: null },
+      { sectionHeading: '### Security', msgPrefix: '(security: )|(Security: )', exclude: null },
+      {
+        sectionHeading: '### Other',
+        msgPrefix: null,
+        exclude:
+          '(added: )|(Added: )|(changed: )|(Changed: )|(deprecated: )|(Deprecated: )|(fixed: )|(Fixed: )|(removed: )|(Removed: )|(security: )|(Security: )',
+      },
+    ];
+  });
+
+  // Removes the prefixes in the commit messages (eg, other, feature, etc)
+  UI.registerHelper('removePrefix', subject => {
     const replaceRegex = new RegExp(/^(.+:)/m);
 
-    return subject.replace(replaceRegex, "").trim();
+    return subject.replace(replaceRegex, '').trim();
   });
 
   // Filters releases to exclude pre-V1 commits
-  UI.registerHelper("filterPostV1Releases", (releases) => {
+  UI.registerHelper('filterPostV1Releases', releases => {
     // Matches Semver formatted versions from v1 and onwards (e.g., v1.x.x, v1.x.x-a.1, v1.x.x-rc.3, etc)
-    const postV1Regex = new RegExp(
-      /^v([0-9][0-9]*)\.(\d*)\.(\d*)[\-(\w)\.\d*]*/
-    );
+    const postV1Regex = new RegExp(/^v?([0-9][0-9]*)\.(\d*)\.(\d*)[\-(\w)\.\d*]*/);
 
-    return releases.filter((release) => release.title.match(postV1Regex));
+    return releases.filter(release => release.title.match(postV1Regex));
   });
 };
