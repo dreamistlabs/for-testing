@@ -1,6 +1,6 @@
 {
   "git": {
-    "changelog": "npm run changelog -- --stdout",
+    "changelog": "npm run changelog:release",
     "commitMessage": "chore: Release v${version}",
     "requireCleanWorkingDir": true
   },
