@@ -12,6 +12,7 @@
     "build": "babel src -d dist -s inline",
     "changelog": "auto-changelog -p --handlebars-setup handlebars.js --template changelog-template.hbs",
     "changelog:debug": "auto-changelog -p --template json --output changelog-preview.json",
+    "changelog:release":"npm run changelog -- --stdout",
     "circular-deps": "madge --circular src",
     "cloc": "cloc --skip-win-hidden --exclude-dir=node_modules,bin,build,coverage,dist --exclude-ext=html --exclude-list-file=.clocignore *",
     "cloc:persist": "npm run cloc -- --md --out=CLOC.md && git add CLOC.md",
