@@ -4,7 +4,7 @@
   "author": "Johnny Hu <johnny@dreamistlabs.com>",
   "main": "dist/index.js",
   "license": "MIT",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "publishConfig": {
     "access": "public"
   },
@@ -12,7 +12,6 @@
     "build": "babel src -d dist -s inline",
     "changelog": "auto-changelog -p --handlebars-setup handlebars.js --template changelog-template.hbs",
     "changelog:debug": "auto-changelog -p --template json --output changelog-preview.json",
-    "changelog:release":"npm run changelog -- --stdout",
     "circular-deps": "madge --circular src",
     "cloc": "cloc --skip-win-hidden --exclude-dir=node_modules,bin,build,coverage,dist --exclude-ext=html --exclude-list-file=.clocignore *",
     "cloc:persist": "npm run cloc -- --md --out=CLOC.md && git add CLOC.md",
@@ -25,6 +24,7 @@
     "pretty-format": "npm run pretty-check -- --write",
     "pretty-quick": "pretty-quick --staged --pattern \"src/**/*.*{js,jsx}\"",
     "release": "release-it",
+    "release:changelog": "npm run changelog -- --stdout",
     "start": "nodemon --exec babel-node src/index.js",
     "test": "jest",
     "test:coverage": "jest --coverage",

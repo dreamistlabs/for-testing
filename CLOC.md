@@ -1,10 +1,10 @@
-cloc|github.com/AlDanial/cloc v 1.94  T=0.05 s (164.4 files/s, 4073.2 lines/s)
+cloc|github.com/AlDanial/cloc v 1.94  T=0.05 s (169.8 files/s, 4113.1 lines/s)
 --- | ---
 
 Language|files|blank|comment|code
 :-------|-------:|-------:|-------:|-------:
-JavaScript|7|14|7|90
 JSON|1|0|0|85
-Handlebars|1|5|0|22
+JavaScript|7|15|7|82
+Handlebars|1|6|0|23
 --------|--------|--------|--------|--------
-SUM:|9|19|7|197
+SUM:|9|21|7|190
