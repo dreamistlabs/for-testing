@@ -12,7 +12,7 @@ _However, please note this feature is still experimental, at best, and is theref
 
 {{#each (filterPostV1Releases releases)}}
   {{#if commits}}
-    ## [v{{title}}]
+    ## [{{title}}]
     _{{formatDate isoDate "long"}}_
   
     {{#each (getCommitSections section)}}
