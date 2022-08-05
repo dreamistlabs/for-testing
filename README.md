@@ -46,7 +46,6 @@ Description to be included.
 |       +-- husky.sh
 |   +-- commit-msg
 |   +-- pre-commit
-|   +-- pre-push
 +-- .eslintignore
 +-- .eslintrc.json
 +-- .prettierignore

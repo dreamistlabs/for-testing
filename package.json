@@ -18,7 +18,6 @@
     "cloc:persist": "npm run cloc -- --md --out=CLOC.md && git add CLOC.md",
     "lint": "eslint src --ext .js,.jsx, --color --fix-dry-run",
     "pre-commit": "run-s pretty-quick \"test -- --changedFilesWithAncestor\" cloc:persist",
-    "pre-push": "run-s lint test",
     "prepare": "husky install",
     "prepublishOnly": "npm run build",
     "pretty-check": "prettier --check \"src/**/*.{js,jsx}\"",

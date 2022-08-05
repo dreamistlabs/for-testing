@@ -2,7 +2,7 @@ name: dlabs-latest-release
 
 on: # 1st of every month, at 5pm PST
   schedule:
-    - cron: '59 23 10 */1 *' # using 10th day for initial testing
+    - cron: '59 23 5 */1 *' # using 5th day for initial testing
 
 jobs:
   dlabs-latest-release:
@@ -13,7 +13,6 @@ jobs:
         with:
           node-version: 12
       - run: npm install
-      - run: npm run build
       - uses: JS-DevTools/npm-publish@v1
         with:
           check-version: true
