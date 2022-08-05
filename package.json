@@ -27,7 +27,7 @@
     "release:changelog": "npm run changelog -- --stdout",
     "release:major": "npm run changelog && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version major && git push origin && git push origin --tags",
     "release:minor": "npm run changelog && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version minor && git push origin && git push origin --tags",
-    "release:patch": "npm version patch && npm run changelog && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && git push origin && git push origin --tags",
+    "release:patch": "npm version patch && npm run changelog && sleep 2 && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && git push origin && git push origin --tags",
     "start": "nodemon --exec babel-node src/index.js",
     "test": "jest",
     "test:coverage": "jest --coverage",
