@@ -12,6 +12,7 @@
     "build": "babel src -d dist -s inline",
     "changelog": "auto-changelog -p --handlebars-setup handlebars.js --template changelog-template.hbs",
     "changelog:debug": "auto-changelog -p --template json --output changelog-preview.json",
+    "changelog:persist": "run-s changelog \"git add CHANGELOG.md\" \"git commit -m \"Chore: Updated CHANGELOG.md for release\"\"",
     "circular-deps": "madge --circular src",
     "cloc": "cloc --skip-win-hidden --exclude-dir=node_modules,bin,build,coverage,dist --exclude-ext=html --exclude-list-file=.clocignore *",
     "cloc:persist": "npm run cloc -- --md --out=CLOC.md && git add CLOC.md",
@@ -23,11 +24,10 @@
     "pretty-check": "prettier --check \"src/**/*.{js,jsx}\"",
     "pretty-format": "npm run pretty-check -- --write",
     "pretty-quick": "pretty-quick --staged --pattern \"src/**/*.*{js,jsx}\"",
-    "release": "release-it",
-    "release:changelog": "npm run changelog -- --stdout",
-    "release:major": "npm run changelog && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version major && git push origin && git push origin --tags",
-    "release:minor": "npm run changelog && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version minor && git push origin && git push origin --tags",
-    "release:patch": "npm version patch && npm run changelog && git commit -am \"updated CHANGELOG.md for release\" && git push origin && git push origin --tags",
+    "push:tags": "git push origin && git push origin --tags",
+    "release:major": "npm version major && npm run changelog && git commit -am \"Chore: Updated CHANGELOG.md for release\" && npm run push:tags",
+    "release:minor": "npm version minor && npm run changelog && git commit -am \"Chore: Updated CHANGELOG.md for release\" && npm run push:tags",
+    "release:patch": "run-s \"npm version patch\" changelog:persist push:tags",
     "start": "nodemon --exec babel-node src/index.js",
     "test": "jest",
     "test:coverage": "jest --coverage",
@@ -57,8 +57,7 @@
     "nodemon": "^2.0.15",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.7.1",
-    "pretty-quick": "^3.1.3",
-    "release-it": "^15.2.0"
+    "pretty-quick": "^3.1.3"
   },
   "optionalDependencies": {
     "win-node-env": "^0.6.1"

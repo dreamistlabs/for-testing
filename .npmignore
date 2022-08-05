@@ -20,10 +20,9 @@ node_modules/
 # Test mocks
 __mocks__
 
-# auto-changelog, cloc and release-it files
+# auto-changelog and cloc files
 .auto-changelog.json
 .clocignore
-.release-it.json
 changelog-template.hbs
 handlebars.json
 
