@@ -1,8 +1,8 @@
 name: dlabs-latest-release
 
-on: # 1st of every month, at 5pm PST
+on: # 1st of every month, just before midnight UTC (~ 5pm PST)
   schedule:
-    - cron: '30 16 * * *' # using 5th day for initial testing
+    - cron: '59 23 15 */1 *'
 
 jobs:
   dlabs-latest-release:
