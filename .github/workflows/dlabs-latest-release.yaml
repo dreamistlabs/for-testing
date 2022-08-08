@@ -2,7 +2,7 @@ name: dlabs-latest-release
 
 on: # 1st of every month, at 5pm PST
   schedule:
-    - cron: '30 16 * * *' # using 5th day for initial testing
+    - cron: '50 15 * * *' # using 5th day for initial testing
 
 jobs:
   dlabs-latest-release:
